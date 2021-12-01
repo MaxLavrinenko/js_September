@@ -55,8 +55,11 @@
 //     }
 // }
 //     k) отримує елемент з класом content_1 та заміняє  в ньому тест на довільний. Текст отримати з prompt()
-
-
+// let cont = document.getElementsByClassName('content_1');
+// let pcon = prompt('vvedi pukvi')
+// for (con of cont){
+//     con.innerText = pcon;
+// }
 
 //     l) отримати елементи p та змінити їм padding на 20px
 // let ps = document.getElementsByTagName('p');
