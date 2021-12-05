@@ -37,80 +37,118 @@
 //     },
 // ];
 // Проітерувати його, створиши для кожного елементу масиву <div class='member'>.
-//
-//
 // - взяти попередній масив з сімпсонами.
-// Проітерувати його, створиши для кожного елементу масиву <div class='member'>. Для кожної властивості елементу створити окремий блок, та помістити його у div.member
+// Проітерувати його, створиши для кожного елементу масиву <div class='member'>.
+// Для кожної властивості елементу створити окремий блок, та помістити його у div.member
 //
-// - Є масив
-// let coursesArray = [
-//     {
-//         title: 'JavaScript Complex',
-//         monthDuration: 5,
-//         hourDuration: 909,
-//         modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js']
-//     },
-//     {
-//         title: 'Java Complex',
-//         monthDuration: 6,
-//         hourDuration: 909,
-//         modules: ['html',
-//             'css',
-//             'js',
-//             'mysql',
-//             'mongodb',
-//             'angular',
-//             'aws',
-//             'docker',
-//             'git',
-//             'java core',
-//             'java advanced']
-//     },
-//     {
-//         title: 'Python Complex',
-//         monthDuration: 6,
-//         hourDuration: 909,
-//         modules: ['html',
-//             'css',
-//             'js',
-//             'mysql',
-//             'mongodb',
-//             'angular',
-//             'aws',
-//             'docker',
-//             'python core',
-//             'python advanced']
-//     },
-//     {
-//         title: 'QA Complex',
-//         monthDuration: 4,
-//         hourDuration: 909,
-//         modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'git', 'QA/QC']
-//     },
-//     {
-//         title: 'FullStack',
-//         monthDuration: 7,
-//         hourDuration: 909,
-//         modules: ['html',
-//             'css',
-//             'js',
-//             'mysql',
-//             'mongodb',
-//             'react',
-//             'angular',
-//             'aws',
-//             'docker',
-//             'git',
-//             'node.js',
-//             'python',
-//             'java']
-//     },
-//     {
-//         title: 'Frontend',
-//         monthDuration: 4,
-//         hourDuration: 909,
-//         modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'sass']
+// for (item  of simpsons){
+//     let div = document.createElement('div');
+//     div.classList.add = ('member');
+//     for(key in item){
+//         if(key === 'photo'){
+//             let img = document.createElement('img');
+//             img.src = `${item[key]}`;
+//             div.appendChild(img);
+//         }
+//         else{
+//         let keybloc = document.createElement('p');
+//         keybloc.innerText = `${key} : ${item[key]}`;
+//         div.appendChild(keybloc)}
 //     }
-// ];
-// Створити для кожного елементу масиву свій блок, блок розділити блоками, в яких будуть зберігатись значення окремих властивостей, для властивості modules зробити список з елементами
+//     document.body.appendChild(div);
+// }
+
+// - Є масив
+let coursesArray = [
+    {
+        title: 'JavaScript Complex',
+        monthDuration: 5,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js']
+    },
+    {
+        title: 'Java Complex',
+        monthDuration: 6,
+        hourDuration: 909,
+        modules: ['html',
+            'css',
+            'js',
+            'mysql',
+            'mongodb',
+            'angular',
+            'aws',
+            'docker',
+            'git',
+            'java core',
+            'java advanced']
+    },
+    {
+        title: 'Python Complex',
+        monthDuration: 6,
+        hourDuration: 909,
+        modules: ['html',
+            'css',
+            'js',
+            'mysql',
+            'mongodb',
+            'angular',
+            'aws',
+            'docker',
+            'python core',
+            'python advanced']
+    },
+    {
+        title: 'QA Complex',
+        monthDuration: 4,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'git', 'QA/QC']
+    },
+    {
+        title: 'FullStack',
+        monthDuration: 7,
+        hourDuration: 909,
+        modules: ['html',
+            'css',
+            'js',
+            'mysql',
+            'mongodb',
+            'react',
+            'angular',
+            'aws',
+            'docker',
+            'git',
+            'node.js',
+            'python',
+            'java']
+    },
+    {
+        title: 'Frontend',
+        monthDuration: 4,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'sass']
+    }
+];
+// Створити для кожного елементу масиву свій блок, блок розділити блоками, в яких будуть зберігатись значення окремих властивостей,
+// для властивості modules зробити список з елементами
 // Приклад структири знаходиться у файлі example.png
+for (item of coursesArray){
+    let wrap = document.createElement('div');
+    let h2 = document.createElement('h2');
+    h2.innerText = `Название курса : ${item.title}`;
+    let flex = document.createElement('div')
+    flex.style.display = 'flex';
+    let monthBlock = document.createElement('h3');
+    monthBlock.innerText = ` Длительность месяцев: ${item.monthDuration}`;
+    monthBlock.style.width = '20%';
+    let hourBlock = document.createElement('h3');
+    hourBlock.innerText = `Студ. часов ${item.hourDuration}`;
+    flex.append(monthBlock,hourBlock);
+    let modBlock = document.createElement('ul');
+    for(element of item.modules){
+        let li = document.createElement('li')
+        li.innerText = `${element}`;
+        modBlock.appendChild(li);
+    }
+    wrap.append(h2,flex,modBlock)
+    document.body.appendChild(wrap)
+}

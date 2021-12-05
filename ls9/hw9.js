@@ -57,8 +57,10 @@ let coursesAndDurationArray = [
 //     let div = document.createElement('div');
 //     div.classList.add = ('item');
 //     let h1 = document.createElement('h1');
+//     h1.classList.add('heading');
 //     h1.innerText = `${item.title}`;
 //     let p = document.createElement('p');
+//     p.classList.add('description');
 //     p.innerText = `${item.monthDuration}`;
 //     document.body.appendChild(div);
 //     div.append(h1,p);
