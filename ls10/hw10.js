@@ -37,14 +37,35 @@
 // }
 
 // - Создайте меню, которое раскрывается/сворачивается при клике
-let ul = document.getElementById('ulList')
-ul.onclick = function (){
-    let li = document.getElementsByTagName('li');
-    li.style.display = 'none'
-}
-
+// let btn = document.getElementById('menu')
+// let ul = document.getElementById('ulList')
+// btn.onclick = function (){
+//     ul.classList.toggle('hide');
+// }
 
 
 // - Создать список комментариев , пример объекта коментария - {title : 'lorem', body:'lorem ipsum dolo sit ameti'}.
 // Вывести список комментариев в документ, каждый в своем блоке.
 //  Добавьте каждому комментарию по кнопке для сворачивания его body.
+// let coments = [
+//     {title:' не качество', body:'качество не очень'},
+//     {title:'качество', body:'качество очень'},
+//     {title:'не практичность', body:'практичность не очень'},
+//     {title:'практичность', body:'рактичность очень'},
+//     {title:'товар', body:'товар не очень'}
+// ]
+// for(coment of coments){
+//     let btn = document.createElement('button');
+//     btn.innerText = 'hiden';
+//     let div = document.createElement('div');
+//     let h2 = document.createElement('h2');
+//     h2.innerText = `${coment.title}`;
+//     let p = document.createElement('p');
+//     p.innerText = `${coment.body}`;
+//     div.append(h2,p,btn);
+//     document.body.appendChild(div);
+//     btn.onclick = function (){
+//         p.classList.toggle('hide')
+//     }
+//
+// }
