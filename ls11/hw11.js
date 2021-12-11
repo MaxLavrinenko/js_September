@@ -50,5 +50,4 @@
 //     let carArr =JSON.parse(localStorage.getItem(key)) || [];
 //     carArr.push(model);
 //     localStorage.setItem(key,JSON.stringify(carArr));
-//
 // }
