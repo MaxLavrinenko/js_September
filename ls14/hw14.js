@@ -156,7 +156,17 @@
 
 
   ////  .Then promises
-
+wakeUp(true)
+    .then(res=>breakfast(res)
+        .then(res=>shower(res)
+            .then(res=>work(res)
+                .then(res=>dinner(res)
+                    .then(res=>work(res)
+                        .then(res=>home(res)
+                            .then(res=>supper(res)
+                                .then(res=>study(res)
+                                    .then(res=>homework(res)
+                                        .then(res=>sleep(res)))))))))))
   // // wakeUp(true)
   // .then(res =>{
   //     breakfast(res)
@@ -191,16 +201,20 @@
   
   ////Async/await
 // async function workDay(){
-//    let result = await wakeUp(true);
-//    await breakfast(result);
-//    await shower(result);
-//    await work(result);
-//    await dinner(result);
-//    await work(result);
-//    await home(result);
-//    await supper(result);
-//    await study(result);
-//    await homework(result);
-//    await sleep(result);
+//     try {
+//         let result = await wakeUp(true);
+//         await breakfast(result);
+//         await shower(result);
+//         await work(result);
+//         await dinner(result);
+//         await work(result);
+//         await home(result);
+//         await supper(result);
+//         await study(result);
+//         await homework(result);
+//         await sleep(result);
+//     } catch (e){
+//         console.log(e)
+//     }
 // }
 // workDay();
