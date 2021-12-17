@@ -218,3 +218,98 @@ wakeUp(true)
 //     }
 // }
 // workDay();
+
+//CALLBACK
+  function wakeUp(todo,callback){
+        setTimeout(()=>{
+          if(todo){
+              console.log('wakeUp and go to work!');
+              callback(todo);
+          }
+          else{
+              console.log('all ended before it began');
+          }
+        },1500);
+}
+
+function breakfast(callback){
+        setTimeout(()=>{
+                console.log('need to hurry');
+                callback();
+        },1000);
+}
+
+function shower(callback){
+        setTimeout(()=>{
+                console.log('take a shower');
+                callback();
+        },900);
+}
+
+function work(callback){
+        setTimeout(()=>{
+                console.log('go to work');
+                callback();
+        },800);
+}
+
+function dinner(callback){
+        setTimeout(()=>{
+                console.log('dinner and relax');
+                callback();
+        },1200);
+}
+
+function home (callback){
+        setTimeout(()=>{
+                console.log('go to home');
+                callback();
+        },850);
+}
+
+function supper(callback){
+      setTimeout(()=>{
+              console.log('eat some food');
+              callback();
+      },550)
+
+}
+
+function study (callback){
+        setTimeout(()=>{
+              console.log('watch lectures from OKTEN');
+              callback();
+    },770)
+}
+
+function homework(callback){
+        setTimeout(()=>{
+                console.log('do some homework and classwork');
+                callback();
+        },1800)
+}
+
+function sleep(){
+        setTimeout(()=>{
+                console.log('go to bed relax and sleep');
+        },2000)
+}
+
+wakeUp(true,()=>{
+    breakfast(()=>{
+        shower(()=>{
+            work(()=>{
+                dinner(()=>{
+                    home(()=>{
+                        supper(()=>{
+                            study(()=>{
+                                homework(()=>{
+                                    sleep();
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    })});
