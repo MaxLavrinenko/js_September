@@ -156,17 +156,17 @@
 
 
   ////  .Then promises
-wakeUp(true)
-    .then(res=>breakfast(res)
-        .then(res=>shower(res)
-            .then(res=>work(res)
-                .then(res=>dinner(res)
-                    .then(res=>work(res)
-                        .then(res=>home(res)
-                            .then(res=>supper(res)
-                                .then(res=>study(res)
-                                    .then(res=>homework(res)
-                                        .then(res=>sleep(res)))))))))))
+// wakeUp(true)
+//     .then(res=>breakfast(res)
+//         .then(res=>shower(res)
+//             .then(res=>work(res)
+//                 .then(res=>dinner(res)
+//                     .then(res=>work(res)
+//                         .then(res=>home(res)
+//                             .then(res=>supper(res)
+//                                 .then(res=>study(res)
+//                                     .then(res=>homework(res)
+//                                         .then(res=>sleep(res)))))))))))
   // // wakeUp(true)
   // .then(res =>{
   //     breakfast(res)
@@ -224,68 +224,118 @@ wakeUp(true)
         setTimeout(()=>{
           if(todo){
               console.log('wakeUp and go to work!');
-              callback(todo);
+              callback(null,todo);
           }
           else{
               console.log('all ended before it began');
+              callback('oops')
           }
         },1500);
 }
 
-function breakfast(callback){
+function breakfast(todo,callback){
         setTimeout(()=>{
+            if(todo === true){
                 console.log('need to hurry');
-                callback();
+                callback(null,todo);
+            }
+            else{
+                console.log('RIP');
+                callback(false,null)
+            }
+
         },1000);
 }
 
-function shower(callback){
+function shower(todo,callback){
         setTimeout(()=>{
+            if(todo === true) {
                 console.log('take a shower');
-                callback();
+                callback(null,todo);
+            }
+            else {
+                console.log('RIP');
+                callback('false', null);
+            }
         },900);
 }
 
-function work(callback){
-        setTimeout(()=>{
-                console.log('go to work');
-                callback();
+function work(todo,callback){
+        setTimeout(()=> {
+            if (todo === true) {
+            console.log('go to work');
+            callback(null, todo);
+        }
+            else {
+                console.log('RIP');
+                callback('false');
+            }
         },800);
 }
 
-function dinner(callback){
-        setTimeout(()=>{
-                console.log('dinner and relax');
-                callback();
+function dinner(todo,callback){
+        setTimeout(()=> {
+            if (todo === true) {
+            console.log('dinner and relax');
+            callback(null,todo);
+        }
+            else{
+                console.log('RIP');
+                c
+            }
         },1200);
 }
 
-function home (callback){
-        setTimeout(()=>{
-                console.log('go to home');
-                callback();
+function home (todo,callback){
+        setTimeout(()=> {
+            if (todo === false) {
+            console.log('go to home');
+            callback(null,todo);
+        }
+                else {
+                console.log('RIP');
+                callback('false');
+            }
         },850);
 }
 
-function supper(callback){
+function supper(todo,callback){
       setTimeout(()=>{
+          if(todo === true) {
               console.log('eat some food');
-              callback();
+              callback(null,todo);
+          }
+          else {
+                console.log('RIP');
+                callback('false');
+            }
       },550)
 
 }
 
-function study (callback){
-        setTimeout(()=>{
-              console.log('watch lectures from OKTEN');
-              callback();
+function study (todo,callback){
+        setTimeout(()=> {
+            if (todo === true) {
+            console.log('watch lectures from OKTEN');
+            callback(null, todo);
+        }
+              else {
+                console.log('RIP');
+                callback('false');
+            }
     },770)
 }
 
-function homework(callback){
-        setTimeout(()=>{
-                console.log('do some homework and classwork');
-                callback();
+function homework(todo,callback){
+        setTimeout(()=> {
+            if(todo === true){
+            console.log('do some homework and classwork');
+            callback(null,todo);
+        }
+                else {
+                console.log('RIP');
+                callback('false');
+            }
         },1800)
 }
 
@@ -295,21 +345,32 @@ function sleep(){
         },2000)
 }
 
-wakeUp(true,()=>{
-    breakfast(()=>{
-        shower(()=>{
-            work(()=>{
-                dinner(()=>{
-                    home(()=>{
-                        supper(()=>{
-                            study(()=>{
-                                homework(()=>{
+wakeUp(true,(err,data)=>{
+    if(err){
+        console.log('RIP')
+        return
+    }
+    breakfast(data,(err,data)=>{
+        shower(data,(err,data)=>{
+            work(data,(err,data)=>{
+                dinner(data,(err,data)=>{
+                    home(data,(err,data)=>{
+                        supper(data,(err,data)=>{
+                            study(data,(err,data)=>{
+                                homework(data,(err,data)=>{
+                                    if(err){
+                                        console.log('Rip');
+                                        return
+                                    }
                                     sleep();
-                                });
-                            });
-                        });
-                    });
-                });
-            });
-        });
-    })});
+                                })
+                            })
+                        })
+                    })
+                })
+            })
+        })
+    })
+})
+
+
