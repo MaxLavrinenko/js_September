@@ -6,11 +6,12 @@
 
 
 let user = JSON.parse(localStorage.getItem('user'));
-console.log(user);
 
 let userContainer = document.createElement('div');
 userContainer.classList.add('userContainer');
+
 let userDiv = document.createElement('div');
+userDiv.classList.add('userDiv');
 userContainer.appendChild(userDiv);
 userDiv.innerHTML=`
     <h1> User Name: ${user.name}</h1>
@@ -30,26 +31,35 @@ userDiv.innerHTML=`
     Company name: ${user.company.name} </br>
     Company catch phrase: ${user.company.catchPhrase}</br>
     business directions: ${user.company.bs}    
-     </p>`
+     </p>`;
+
 let postButton = document.createElement("button");
+postButton.classList.add('button');
 postButton.innerText = 'post of current user';
 postButton.onclick = function (){
+    let postContainer = document.createElement('div');
+    postContainer.classList.add('postContainer');
+    document.body.appendChild(postContainer);
     fetch(`https://jsonplaceholder.typicode.com/users/${user.id}/posts`)
         .then(response=> response.json())
         .then(posts =>{
             for (let post of posts) {
-                let titleDiv = document.createElement('div')
-                document.body.appendChild(titleDiv);
+                let titleDiv = document.createElement('div');
+                postContainer.appendChild(titleDiv);
                 titleDiv.innerText = `Post title: ${post.title} `
-                let postButton = document.createElement("button");
-                postButton.innerText = 'post details';
-                titleDiv.appendChild(postButton);
-                postButton.onclick = function (){
-                    localStorage.setItem('post',JSON.stringify(post))
-                    window.location.href='post-details.html'
-                }
+                titleDiv.classList.add('titleDiv');
 
-            }
+                let detailButton = document.createElement("button");
+                detailButton.innerText = 'post details';
+                titleDiv.appendChild(detailButton);
+
+                detailButton.onclick = function (){
+                    localStorage.setItem('post',JSON.stringify(post));
+                    window.location.href='post-details.html';
+                }
+                    postButton.disabled =true;
+
+                }
         })
     }
 

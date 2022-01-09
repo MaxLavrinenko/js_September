@@ -7,8 +7,13 @@ let postDiv = document.createElement('div');
 postDiv.innerHTML = `<h3>Title of post: ${post.title}</h3>
                        <h4>id of post: ${post.id};  User ID who write this post: ${post.userId}</h4> 
                        <p> Post: ${post.body} </p> `;
+postDiv.classList.add('postDiv');
+
+let commentsContainer = document.createElement('div');
+commentsContainer.classList.add('commentContainer');
 
 let commenButton = document.createElement('button');
+
 commenButton.innerText = 'comments'
 commenButton.onclick = function (){
     fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`)
@@ -16,12 +21,14 @@ commenButton.onclick = function (){
         .then(comments =>{
             for(let comment of comments){
                 let commentDiv = document.createElement('div');
+                commentDiv.classList.add('commentDiv');
                 commentDiv.innerHTML=`
-                <h4>ID of comment: ${comment.id}  Email: ${comment.email} </h4>
+                <h4>ID of comment: ${comment.id} </br> Email: ${comment.email} </h4>
                 <h5>Name: ${comment.name}</h5> 
                 <p>Text: ${comment.body}</p>   `
-                postDiv.appendChild(commentDiv)
+                commentsContainer.appendChild(commentDiv);
             }
+            commenButton.disabled = true;
         })
 }
-document.body.append(postDiv,commenButton);
+document.body.append(postDiv,commenButton,commentsContainer);

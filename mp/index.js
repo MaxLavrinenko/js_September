@@ -13,11 +13,13 @@ fetch('https://jsonplaceholder.typicode.com/users')
         let container = document.createElement('div');
         container.classList.add('container')
         document.body.appendChild(container);
+
         for(let user of users){
             let userDiv = document.createElement('div')
-            userDiv.classList.add('userdiv');
+            userDiv.classList.add('userDiv');
             userDiv.innerHTML = `<h3> ID = ${user.id} </h3><h2> Name: ${user.name}</h2>`
             container.appendChild(userDiv);
+
             let userButton = document.createElement('button');
             userButton.innerText = 'datails';
             userDiv.appendChild(userButton);
